@@ -31,7 +31,7 @@ sim_means <- apply(sim, 1, mean)
 ```
 
 Plot the histogram to visualize.  
-```{r histogram1, echo=TRUE, fig.height=4, fig.width=6}
+```{r histogram1, echo=TRUE, fig.height=3.5, fig.width=5}
 #plot the histogram
 hist(sim_means, main="Histogram of Sample Means", xlab="Sample Means", ylab="Frequency", col = "steelblue")
 ```
@@ -67,7 +67,7 @@ The sample mean is approximately equal to the theoretical mean.
 ## Distribution  
 
 To check if the distribution is similar to a normal distribution, let's provide the theoretical mean and variance into the *dnorm* function.  
-```{r distrubtion, echo=TRUE, fig.height=4, fig.width=6}
+```{r distrubtion, echo=TRUE, fig.height=3.5, fig.width=5}
 #generate quantiles
 x <- seq(min(sim_means), max(sim_means), length = 100)
 #plot the histogram
