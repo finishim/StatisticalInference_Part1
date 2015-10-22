@@ -1,8 +1,8 @@
 ---
-title: "SimulationExercise_Part1"
+title: "Statistical Inference Project Part 1"
 author: "Nazmi Anik"
 date: "Thursday, October 22, 2015"
-output: html_document
+output: pdf_document
 ---
 
 ## Overview  
@@ -22,8 +22,10 @@ nosim <- 1000
 lambda <- 0.2
 #number of samples
 n <- 40
+
 #set seed for reproducibility
 set.seed(42)
+
 #run exponential simulations
 sim <- matrix(data = rexp(nosim * n, rate = lambda), nrow = nosim)
 #apply the mean to get the mean of each row
@@ -31,7 +33,7 @@ sim_means <- apply(sim, 1, mean)
 ```
 
 Plot the histogram to visualize.  
-```{r histogram1, echo=TRUE, fig.height=4, fig.width=6}
+```{r histogram1, echo=TRUE, fig.height=6, fig.width=8}
 #plot the histogram
 hist(sim_means, main="Histogram of Sample Means", xlab="Sample Means", ylab="Frequency", col = "steelblue")
 ```
@@ -51,25 +53,8 @@ theoretical_mean
 ```
 
 The sample mean is approximately equal to the theoretical mean.  
-
-## Sample Variance versus Theoretical Variance  
-
-The theoretical standard deviation is also calculated by 1/lambda. Since we have 40 samples in each experiment, theoretical standard deviation is (1/lambda)/sqrt(n). Here's the comparison of sample variance and theoretical variance:  
-```{r compare_var, echo=TRUE}
-sample_variance <- (sd(sim_means))^2
-theoretical_variance <- ((1/lambda)/sqrt(n))^2
-sample_variance
-theoretical_variance
-```
-
-The sample mean is approximately equal to the theoretical mean.  
-
-## Distribution  
-
-## Supporting Images
-
-We can view that the sample mean and theoretical mean are very close in the following histogram:  
-```{r histogram_mean, echo=TRUE, fig.height=5, fig.width=7}
+We can also view this in the histogram:  
+```{r histogram_mean, echo=TRUE, fig.height=6, fig.width=8}
 #plot the histogram
 hist(sim_means, main="Histogram of Sample Means", xlab="Sample Means", ylab="Frequency", col = "steelblue")
 abline(v = sample_mean, col = "orange")
@@ -77,11 +62,21 @@ abline(v = theoretical_mean, col = "green")
 legend(x = "topright", c("Distribution", "Sample Mean", "Theoretical Mean"), col = c("steelblue", "orange", "green"), lwd = c(2, 2, 2))
 ```
 
-We can also view that the sample mean and theoretical standard deviations (and therefore variances) are very close in the following histogram:  
-```{r histogram_var, echo=TRUE, fig.height=5, fig.width=7}
-#calculate standard deviations
+## Sample Variance versus Theoretical Variance  
+
+The theoretical standard deviation is also calculated by 1/lambda. Since we have 40 samples in each experiment, theoretical standard deviation is (1/lambda)/sqrt(n). Here's the comparison of sample variance and theoretical variance:  
+```{r compare_var, echo=TRUE}
 sample_sd <- sd(sim_means)
 theoretical_sd <- (1/lambda)/sqrt(n)
+sample_variance <- (sd(sim_means))^2
+theoretical_variance <- ((1/lambda)/sqrt(n))^2
+sample_variance
+theoretical_variance
+```
+
+The sample mean is approximately equal to the theoretical mean.  
+We can also view this in the histogram:  
+```{r histogram_var, echo=TRUE, fig.height=6, fig.width=8}
 #plot the histogram
 hist(sim_means, main="Histogram of Sample Means and Standard Deviations", xlab="Sample Means", ylab="Frequency", col = "steelblue")
 abline(v = sample_mean + sample_sd, col = "orange")
@@ -90,3 +85,5 @@ abline(v = theoretical_mean + theoretical_sd, col = "green")
 abline(v = theoretical_mean - theoretical_sd, col = "green")
 legend(x = "topright", c("Distribution", "Sample SD", "Theoretical SD"), col = c("steelblue", "orange", "green"), lwd = c(2, 2, 2))
 ```
+
+## Distribution  
