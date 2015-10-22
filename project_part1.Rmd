@@ -66,6 +66,18 @@ The sample mean is approximately equal to the theoretical mean.
 
 ## Distribution  
 
+To check if the distribution is similar to a normal distribution, let's provide the theoretical mean and variance into the *dnorm* function.  
+```{r distrubtion, echo=TRUE, fig.height=4, fig.width=6}
+#generate quantiles
+x <- seq(min(sim_means), max(sim_means), length = 100)
+#plot the histogram
+hist(sim_means, prob = TRUE, breaks = 20, main="Density of Sample Means", xlab="Sample Means", ylab="Density", col = "steelblue")
+#plot the normal distribution curve
+curve(dnorm(x, mean = 1/lambda, sd = (1/lambda)/sqrt(n)),col="orange",lwd=2,add=TRUE)
+```
+
+As it is visible from the above figure, the distribution of the exponential approximates to a normal distribution.  
+
 ## Supporting Images
 
 We can view that the sample mean and theoretical mean are very close in the following histogram:  
