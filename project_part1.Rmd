@@ -7,10 +7,31 @@ output: html_document
 
 ## Overview  
 
+In this project the exponential distribution will be investigated in R and a comparison with the Central Limit Theorem will
+be provided. Lambda parameter will be set at 0.2 for all of the simulations. The distribution of averages of 40 exponentials
+will be investigated. A thousand simulations will be carried out.
 
 
 ## Simulations 
 
-```{r, echo = TRUE}
+```{r simulations, echo = TRUE}
+#number of simulations
+nosim <- 1000
+#lambda value given
+lambda <- 0.2
+#number of samples
+n <- 40
 
+#set seed for reproducibility
+set.seed(42)
+
+#run exponential simulations
+sim <- matrix(data = rexp(nosim * n, rate = lambda), nrow = nosim)
+#apply the mean to get the mean of each row
+sim_means <- apply(sim, 1, mean)
+```
+
+```{r histogram1, echo=TRUE, fig.height=6, fig.width=8}
+#plot the histogram
+hist(sim_means, col = "steelblue")
 ```
