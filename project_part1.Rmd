@@ -1,0 +1,16 @@
+---
+title: "SimulationExercise_Part1"
+author: "Nazmi Anik"
+date: "Thursday, October 22, 2015"
+output: html_document
+---
+
+## Overview  
+
+
+
+## Simulations 
+
+```{r, echo = TRUE}
+
+```
